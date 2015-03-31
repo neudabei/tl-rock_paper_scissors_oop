@@ -94,4 +94,9 @@ end
       end
   end
 
-  game = Game.new.play
+
+  begin
+    game = Game.new.play
+    puts "Do you want to play again? (y/n)"
+    again = gets.chomp.downcase
+  end until again == 'n'
