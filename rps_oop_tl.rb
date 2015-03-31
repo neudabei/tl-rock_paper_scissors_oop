@@ -62,41 +62,41 @@ class Computer < Player
 end
 
 
-  class Game
-      CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
+class Game
+  CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
 
-      attr_reader :player, :computer
+  attr_reader :player, :computer
 
-      def initialize
-        @player = Human.new("Bob")
-        @computer = Computer.new("R2D2")
-      end
-
-      def compare_hands
-        if player.hand == computer.hand
-          puts "It's a tie!"
-        elsif player.hand > computer.hand
-          player.hand.display_winning_message
-          puts "#{player.name} won!"
-        else
-          computer.hand.display_winning_message
-          puts "#{computer.name} won!"
-      end
-    end
-
-      def play
-        player.pick_hand
-        computer.pick_hand
-        compare_hands
-
-        puts player
-        puts computer
-      end
+  def initialize
+    @player = Human.new("Bob")
+    @computer = Computer.new("R2D2")
   end
 
+  def compare_hands
+    if player.hand == computer.hand
+      puts "It's a tie!"
+    elsif player.hand > computer.hand
+      player.hand.display_winning_message
+      puts "#{player.name} won!"
+    else
+      computer.hand.display_winning_message
+      puts "#{computer.name} won!"
+    end
+  end
 
-  begin
-    game = Game.new.play
-    puts "Do you want to play again? (y/n)"
-    again = gets.chomp.downcase
-  end until again == 'n'
+  def play
+    player.pick_hand
+    computer.pick_hand
+    compare_hands
+
+    puts player
+    puts computer
+  end
+end
+
+
+begin
+  game = Game.new.play
+  puts "Do you want to play again? (y/n)"
+  again = gets.chomp.downcase
+end until again == 'n'
